@@ -35,8 +35,8 @@ namespace StepRunBeta.DB
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-2KIP198\\SQLEXPRESS;Initial Catalog=RunBeta2;Trusted_Connection=True; User=dbo");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=DESKTOP-2KIP198\\SQLEXPRESS;Database=RunBeta2;Trusted_Connection=True; User=dbo");
             }
         }
 
@@ -229,11 +229,6 @@ namespace StepRunBeta.DB
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.PassportId)
                     .HasConstraintName("FK_User_Passport");
-
-                entity.HasOne(d => d.Role)
-                    .WithMany(p => p.Users)
-                    .HasForeignKey(d => d.RoleId)
-                    .HasConstraintName("FK_User_Role");
 
                 entity.HasOne(d => d.UserType)
                     .WithMany(p => p.Users)

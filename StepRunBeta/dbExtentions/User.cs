@@ -20,7 +20,6 @@ namespace StepRunBeta.DB
                 UserName = user.Username,
                 UserTypeId = user.UserTypeId,
                 GenderId = user.GenderId,
-                RoleId = user.RoleId,
                 Telephone = user.Telephone
             };
         }
@@ -41,7 +40,6 @@ namespace StepRunBeta.DB
                 Username = user.UserName,
                 UserTypeId = user.UserTypeId,
                 GenderId = user.GenderId,
-                RoleId = user.RoleId,
                 Telephone = user.Telephone
             };
         }

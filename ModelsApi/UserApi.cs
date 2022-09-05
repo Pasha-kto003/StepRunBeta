@@ -14,7 +14,6 @@
         public long? PassPortId { get; set; }
         public long? GenderId { get; set; }
         public long? UserTypeId { get; set; }
-        public long? RoleId { get; set; }
         public PassportApi Passport { get; set; }
     }
 }

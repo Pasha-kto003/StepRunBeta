@@ -18,11 +18,9 @@ namespace StepRunBeta.DB
         public long? UserTypeId { get; set; }
         public long? GenderId { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        public long? RoleId { get; set; }
 
         public virtual Gender? Gender { get; set; }
         public virtual Passport? Passport { get; set; }
-        public virtual Role? Role { get; set; }
         public virtual UserType? UserType { get; set; }
     }
 }

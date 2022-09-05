@@ -4,50 +4,50 @@ using StepRunBeta.DB;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace StepRun.Server.Controllers
+namespace StepRunBeta.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserTypesController : ControllerBase
+    public class GenderController : ControllerBase
     {
-        // GET: api/<UserTypesController>
+        // GET: api/<GenderController>
         [HttpGet]
-        public IEnumerable<UserTypeApi> Get()
+        public IEnumerable<GenderApi> Get()
         {
-            return dbContext.UserTypes.ToList().Select(s => (UserTypeApi)s);
+            return dbContext.Genders.ToList().Select(s => (GenderApi)s);
         }
 
         private readonly RunBeta2Context dbContext;
-        public UserTypesController(RunBeta2Context dbContext) 
+        public GenderController(RunBeta2Context dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        // GET api/<UserTypesController>/5
+        // GET api/<GenderController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserTypeApi>> Get(int id)
+        public async Task<ActionResult<GenderApi>> Get(int id)
         {
-            var type = await dbContext.UserTypes.FindAsync(id);
+            var type = await dbContext.Genders.FindAsync(id);
             if (type == null)
                 return NotFound();
-            return Ok((UserTypeApi)type);
+            return Ok((GenderApi)type);
         }
 
-        // POST api/<UserTypesController>
+        // POST api/<GenderController>
         [HttpPost]
-        public async Task<ActionResult<long>> Post([FromBody] UserTypeApi typeApi)
+        public async Task<ActionResult<long>> Post([FromBody] GenderApi typeApi)
         {
-            var newType = (UserType)typeApi;
-            await dbContext.UserTypes.AddAsync(newType);
+            var newType = (Gender)typeApi;
+            await dbContext.Genders.AddAsync(newType);
             await dbContext.SaveChangesAsync();
             return Ok(newType.Id);
         }
 
-        // PUT api/<UserTypesController>/5
+        // PUT api/<GenderController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(long id, [FromBody] UserTypeApi typeApi)
+        public async Task<ActionResult> Put(long id, [FromBody] GenderApi typeApi)
         {
-            var oldType = await dbContext.UserTypes.FindAsync(id);
+            var oldType = await dbContext.Genders.FindAsync(id);
             if (oldType == null)
                 return NotFound();
             dbContext.Entry(oldType).CurrentValues.SetValues(typeApi);
@@ -55,14 +55,14 @@ namespace StepRun.Server.Controllers
             return Ok();
         }
 
-        // DELETE api/<UserTypesController>/5
+        // DELETE api/<GenderController>/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var oldType = await dbContext.UserTypes.FindAsync(id);
+            var oldType = await dbContext.Genders.FindAsync(id);
             if (oldType == null)
                 return NotFound();
-            dbContext.UserTypes.Remove(oldType);
+            dbContext.Genders.Remove(oldType);
             await dbContext.SaveChangesAsync();
             return Ok();
         }

@@ -4,50 +4,50 @@ using StepRunBeta.DB;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace StepRun.Server.Controllers
+namespace StepRunBeta.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserTypesController : ControllerBase
+    public class RoleController : ControllerBase
     {
-        // GET: api/<UserTypesController>
+        // GET: api/<RoleController>
         [HttpGet]
-        public IEnumerable<UserTypeApi> Get()
+        public IEnumerable<RoleTypeApi> Get()
         {
-            return dbContext.UserTypes.ToList().Select(s => (UserTypeApi)s);
+            return dbContext.Roles.ToList().Select(s => (RoleTypeApi)s);
         }
 
         private readonly RunBeta2Context dbContext;
-        public UserTypesController(RunBeta2Context dbContext) 
+        public RoleController(RunBeta2Context dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        // GET api/<UserTypesController>/5
+        // GET api/<RoleController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserTypeApi>> Get(int id)
+        public async Task<ActionResult<RoleTypeApi>> Get(int id)
         {
-            var type = await dbContext.UserTypes.FindAsync(id);
+            var type = await dbContext.Roles.FindAsync(id);
             if (type == null)
                 return NotFound();
-            return Ok((UserTypeApi)type);
+            return Ok((RoleTypeApi)type);
         }
 
-        // POST api/<UserTypesController>
+        // POST api/<RoleController>
         [HttpPost]
-        public async Task<ActionResult<long>> Post([FromBody] UserTypeApi typeApi)
+        public async Task<ActionResult<long>> Post([FromBody] RoleTypeApi typeApi)
         {
-            var newType = (UserType)typeApi;
-            await dbContext.UserTypes.AddAsync(newType);
+            var newType = (Role)typeApi;
+            await dbContext.Roles.AddAsync(newType);
             await dbContext.SaveChangesAsync();
             return Ok(newType.Id);
         }
 
-        // PUT api/<UserTypesController>/5
+        // PUT api/<RoleController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(long id, [FromBody] UserTypeApi typeApi)
+        public async Task<ActionResult> Put(long id, [FromBody] RoleTypeApi typeApi)
         {
-            var oldType = await dbContext.UserTypes.FindAsync(id);
+            var oldType = await dbContext.Roles.FindAsync(id);
             if (oldType == null)
                 return NotFound();
             dbContext.Entry(oldType).CurrentValues.SetValues(typeApi);
@@ -55,14 +55,14 @@ namespace StepRun.Server.Controllers
             return Ok();
         }
 
-        // DELETE api/<UserTypesController>/5
+        // DELETE api/<RoleController>/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var oldType = await dbContext.UserTypes.FindAsync(id);
+            var oldType = await dbContext.Roles.FindAsync(id);
             if (oldType == null)
                 return NotFound();
-            dbContext.UserTypes.Remove(oldType);
+            dbContext.Roles.Remove(oldType);
             await dbContext.SaveChangesAsync();
             return Ok();
         }
