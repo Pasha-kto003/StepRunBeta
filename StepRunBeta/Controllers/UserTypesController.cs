@@ -18,7 +18,7 @@ namespace StepRun.Server.Controllers
         }
 
         private readonly RunBeta2Context dbContext;
-        public UserTypesController(RunBeta2Context dbContext) //
+        public UserTypesController(RunBeta2Context dbContext) 
         {
             this.dbContext = dbContext;
         }
